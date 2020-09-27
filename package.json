@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/olucasgomes/Kapivara#readme",
   "dependencies": {
+    "dotenv": "^8.2.0"
   },
   "devDependencies": {
     "eslint": "^7.10.0",
