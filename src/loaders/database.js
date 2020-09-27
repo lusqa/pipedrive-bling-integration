@@ -15,7 +15,7 @@ const databaseLoader = () => {
   setTimeout(() => {
     const connectionState = mongoose.connection.readyState
     if (connectionState === 1) {
-      LOGGER.info('Connection to database engine has successfully established ✅')
+      LOGGER.info('Connection to database engine has successfully established')
     } else {
       LOGGER.error('Something went wrong connecting to the database!')
     }

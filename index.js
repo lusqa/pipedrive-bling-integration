@@ -15,10 +15,7 @@ const startServer = async () => {
       throw err
     }
 
-    LOGGER.info(`
-    ################################################
-        🏁  Server listening on port: ${PORT} 🏁 
-    ################################################`)
+    LOGGER.info(`Server listening on port: ${PORT}`)
   })
 }
 
