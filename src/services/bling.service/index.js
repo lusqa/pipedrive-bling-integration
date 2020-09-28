@@ -7,14 +7,13 @@ const xml = require('./xml')
 
 module.exports = {
   createOrder: async (order) => {
-    LOGGER.debug('Creating order on Bling')
+    LOGGER.debug('Creating order on Bling to deal id: [%s]', order.code)
     try {
       const orderXML = xml.getXML({
         code: order.code,
         companyName: order.companyName,
         productValue: order.productValue,
-        productTitle: order.productTitle,
-        dateCreated: order.dateCreated
+        productTitle: order.productTitle
       })
       const { data } = await axios.post('https://bling.com.br/Api/v2/pedido/json/', undefined, {
         params: {

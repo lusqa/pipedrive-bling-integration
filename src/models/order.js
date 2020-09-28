@@ -3,34 +3,14 @@ const { Schema } = mongoose
 
 const schema = new Schema(
   {
-    id_deal: {
-      type: String,
+    total_value: {
+      type: Number,
+      required: true
+    },
+    won_date: {
+      type: Date,
       required: true,
       unique: true
-    },
-    client: {
-      company_name: {
-        type: String,
-        required: true
-      },
-      name: {
-        type: String,
-        required: true
-      }
-    },
-    product: {
-      title: {
-        type: String,
-        required: true
-      },
-      currency: {
-        type: String,
-        required: true
-      },
-      value: {
-        type: Number,
-        required: true
-      }
     }
   },
   {
@@ -47,16 +27,8 @@ schema.statics.createOrder = async function (params) {
   let order
   await session.withTransaction(async () => {
     order = await this.create({
-      id_deal: params.id_deal,
-      client: {
-        company_name: params.company_name,
-        name: params.name
-      },
-      product: {
-        title: params.title,
-        currency: params.currency,
-        value: params.value
-      }
+      total_value: params.totalValue,
+      won_date: params.wonDate
     })
   })
 
