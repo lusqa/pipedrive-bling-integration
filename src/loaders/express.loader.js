@@ -1,6 +1,7 @@
 const bodyParser = require('body-parser')
 
 const { NODE_ENV } = require('../env')
+const routes = require('../api/routes')
 
 const expressLoader = ({ app }) => {
   if (NODE_ENV === 'development') {
@@ -10,6 +11,8 @@ const expressLoader = ({ app }) => {
 
   app.use(bodyParser.urlencoded({ extended: false }))
   app.use(bodyParser.json())
+
+  app.use('/', routes())
 
   return app
 }
