@@ -1,10 +1,10 @@
 const pipedrive = require('pipedrive')
 
-const LOGGER = require('../../../logger')([__filename].join())
-const { PIPEDRIVE_API_TOKEN } = require('../../../env')
+const LOGGER = require('../../logger')([__filename].join())
+const { PIPEDRIVE_API_TOKEN } = require('../../env')
 
-const Order = require('../../../models/order')
-const BlingService = require('../../../services/bling.service')
+const Order = require('../../models/order')
+const BlingService = require('../../services/bling.service')
 
 const { DealsController } = pipedrive
 

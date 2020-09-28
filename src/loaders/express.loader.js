@@ -1,7 +1,7 @@
 const bodyParser = require('body-parser')
 
 const { NODE_ENV } = require('../env')
-const routes = require('../api/routes')
+const routes = require('../routes')
 
 const expressLoader = ({ app }) => {
   if (NODE_ENV === 'development') {
