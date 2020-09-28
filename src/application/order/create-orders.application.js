@@ -30,24 +30,26 @@ module.exports = async () => {
       const actualValue = dbDeals.get(utcDate) || 0
       dbDeals.set(utcDate, actualValue + deal.value)
 
-      await BlingService.createOrder({
-        code: deal.id_deal,
-        companyName: deal.org_name,
-        productValue: deal.value,
-        productTitle: deal.title
-      })
+      const existingOrder = await Order.findOne({ won_date: utcDate })
+      if (!existingOrder) {
+        await BlingService.createOrder({
+          code: deal.id_deal,
+          companyName: deal.org_name,
+          productValue: deal.value,
+          productTitle: deal.title
+        })
+      }
     } catch (err) {
       LOGGER.error('Error creating orders in Bling service [%o]', err)
       throw err
     }
   })
 
-  dbDeals.forEach(async (totalValue, wonDate) => {
+  dbDeals.forEach(async (value, key) => {
     try {
-      LOGGER.debug('Creating order on database to date: [%s]', wonDate)
       await Order.createOrder({
-        totalValue,
-        wonDate
+        total_value: value,
+        won_date: key
       })
     } catch (err) {
       LOGGER.error('Error creating orders in database [%o]', err)

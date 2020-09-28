@@ -24,17 +24,18 @@ const schema = new Schema(
 schema.statics.createOrder = async function (params) {
   const session = await mongoose.startSession()
 
-  let order
   await session.withTransaction(async () => {
-    order = await this.create({
-      total_value: params.totalValue,
-      won_date: params.wonDate
-    })
+    const existingOrder = await this.findOne({ won_date: params.won_date })
+
+    if (!existingOrder) {
+      await this.create({
+        total_value: params.total_value,
+        won_date: params.won_dat
+      })
+    }
   })
 
   session.endSession()
-
-  return order
 }
 
 module.exports = mongoose.model('order', schema, 'order')
