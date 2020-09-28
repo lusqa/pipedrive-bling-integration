@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const LOGGER = require('../logger')([__filename].join())
 const { DATABASE_URL } = require('../env')
 
-const databaseLoader = () => {
+const databaseLoader = async () => {
   const options = {
     useNewUrlParser: true,
     useFindAndModify: false,
@@ -10,16 +10,14 @@ const databaseLoader = () => {
     useCreateIndex: true
   }
 
-  mongoose.connect(DATABASE_URL, options)
+  await mongoose.connect(DATABASE_URL, options)
 
-  setTimeout(() => {
-    const connectionState = mongoose.connection.readyState
-    if (connectionState === 1) {
-      LOGGER.info('Connection to database engine has successfully established')
-    } else {
-      LOGGER.error('Something went wrong connecting to the database!')
-    }
-  }, 3000)
+  const connectionState = mongoose.connection.readyState
+  if (connectionState === 1) {
+    LOGGER.info('Connection to database engine has successfully established')
+  } else {
+    LOGGER.error('Something went wrong connecting to the database!')
+  }
 }
 
 module.exports = databaseLoader
