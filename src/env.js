@@ -8,6 +8,5 @@ module.exports = {
   DATABASE_URL: process.env.DATABASE_URL || 'mongodb://localhost:27017/seqtdb',
   LOGGER_LEVEL: process.env.LOGGER_LEVEL || 'debug',
   PIPEDRIVE_API_TOKEN: process.env.PIPEDRIVE_API_TOKEN,
-  BLING_HOST: process.env.BLING_HOST,
   BLING_API_KEY: process.env.BLING_API_KEY
 }
