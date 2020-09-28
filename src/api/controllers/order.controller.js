@@ -1,4 +1,4 @@
-const { getAllOrders } = require('../../application/order')
+const { getAllOrders } = require('../application/order')
 
 module.exports = {
   getAll: async (req, res) => {

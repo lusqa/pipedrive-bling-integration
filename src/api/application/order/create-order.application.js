@@ -1,10 +1,10 @@
 const pipedrive = require('pipedrive')
 
-const LOGGER = require('../../logger')([__filename].join())
+const LOGGER = require('../../../logger')([__filename].join())
 
-const Order = require('../../models/order')
+const Order = require('../../../models/order')
 
-const { PIPEDRIVE_API_TOKEN } = require('../../env')
+const { PIPEDRIVE_API_TOKEN } = require('../../../env')
 
 const { DealsController } = pipedrive
 
