@@ -1,5 +1,5 @@
-const expressLoader = require('./express')
-const databaseLoader = require('./database')
+const expressLoader = require('./express.loader')
+const databaseLoader = require('./database.loader')
 
 const LOGGER = require('../logger')([__filename].join())
 
