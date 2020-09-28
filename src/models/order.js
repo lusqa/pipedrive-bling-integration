@@ -45,22 +45,18 @@ schema.statics.createOrder = async function (params) {
   const session = await mongoose.startSession()
 
   await session.withTransaction(async () => {
-    const existingOrder = await this.findOne({ id_deal: params.id_deal })
-
-    if (!existingOrder) {
-      await this.create({
-        id_deal: params.id_deal,
-        client: {
-          company_name: params.company_name,
-          name: params.name
-        },
-        product: {
-          title: params.title,
-          currency: params.currency,
-          value: params.value
-        }
-      })
-    }
+    await this.create({
+      id_deal: params.id_deal,
+      client: {
+        company_name: params.company_name,
+        name: params.name
+      },
+      product: {
+        title: params.title,
+        currency: params.currency,
+        value: params.value
+      }
+    })
   })
 
   session.endSession()

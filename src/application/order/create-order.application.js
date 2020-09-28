@@ -24,15 +24,19 @@ module.exports = async () => {
   const { data: deals } = response
   try {
     deals.forEach(async deal => {
-      LOGGER.debug('Creating order on database to deal id: [%s]', deal.id)
-      await Order.createOrder({
-        company_name: deal.org_name,
-        name: deal.person_name,
-        title: deal.title,
-        currency: deal.currency,
-        value: deal.value,
-        id_deal: deal.id
-      })
+      const existingOrder = await Order.findOne({ id_deal: deal.id })
+
+      if (!existingOrder) {
+        LOGGER.debug('Creating order on database to deal id: [%s]', deal.id)
+        await Order.createOrder({
+          company_name: deal.org_name,
+          name: deal.person_name,
+          title: deal.title,
+          currency: deal.currency,
+          value: deal.value,
+          id_deal: deal.id
+        })
+      }
     })
   } catch (err) {
     LOGGER.error('Error creating orders in database [%o]', err)
