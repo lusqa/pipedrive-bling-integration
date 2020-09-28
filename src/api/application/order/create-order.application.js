@@ -1,10 +1,10 @@
 const pipedrive = require('pipedrive')
 
 const LOGGER = require('../../../logger')([__filename].join())
+const { PIPEDRIVE_API_TOKEN } = require('../../../env')
 
 const Order = require('../../../models/order')
-
-const { PIPEDRIVE_API_TOKEN } = require('../../../env')
+const BlingService = require('../../../services/bling.service')
 
 const { DealsController } = pipedrive
 
@@ -28,13 +28,21 @@ module.exports = async () => {
 
       if (!existingOrder) {
         LOGGER.debug('Creating order on database to deal id: [%s]', deal.id)
-        await Order.createOrder({
+        const order = await Order.createOrder({
           company_name: deal.org_name,
           name: deal.person_name,
           title: deal.title,
           currency: deal.currency,
           value: deal.value,
           id_deal: deal.id
+        })
+
+        await BlingService.createOrder({
+          code: order.id_deal,
+          companyName: order.client.company_name,
+          productValue: order.product.value,
+          productTitle: order.product.title,
+          dateCreated: order.date_created
         })
       }
     })

@@ -44,8 +44,9 @@ const schema = new Schema(
 schema.statics.createOrder = async function (params) {
   const session = await mongoose.startSession()
 
+  let order
   await session.withTransaction(async () => {
-    await this.create({
+    order = await this.create({
       id_deal: params.id_deal,
       client: {
         company_name: params.company_name,
@@ -60,6 +61,8 @@ schema.statics.createOrder = async function (params) {
   })
 
   session.endSession()
+
+  return order
 }
 
 module.exports = mongoose.model('order', schema, 'order')
