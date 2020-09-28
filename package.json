@@ -47,5 +47,9 @@
   },
   "bugs": {
     "url": "https://github.com/olucasgomes/Kapivara/issues"
+  },
+  "engines": {
+    "yarn": ">=1.22.5",
+    "node": ">=12.18.4"
   }
 }
