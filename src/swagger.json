@@ -1,0 +1,113 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "version": "1.0.0",
+    "title": "Kapivara",
+    "description": ""
+  },
+  "servers": [
+  ],
+  "externalDocs": {
+  },
+  "tags": [
+    {
+      "name": "order",
+      "description": "Operations about order"
+    }
+  ],
+  "paths": {
+    "/order": {
+      "get": {
+        "tags": [
+          "order"
+        ],
+        "summary": "Get orders from database",
+        "description": "Return the id_deal, the client and the product info",
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/order"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "order": {
+        "type": "object",
+        "properties": {
+          "client": {
+            "type": "object",
+            "description": "The client information (org_name and person_name) from the pipedrive deal",
+            "example": {
+              "company_name": "Company 123",
+              "name": "Joseph Gomez"
+            }
+          },
+          "product": {
+            "type": "object",
+            "description": "The product information (value, currency and title) from the pipedrive deal",
+            "example": {
+              "title": "Product title 123",
+              "value": "175000",
+              "currency": "BRL"
+            }
+          },
+          "_id": {
+            "type": "string",
+            "description": "The order id",
+            "example": "507f1f77bcf86cd799439011"
+          },
+          "id_deal": {
+            "type": "string",
+            "description": "The deal id from pipedrive",
+            "example": "1"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "The timestamp of creation on database (ISO format)",
+            "example": "2020-09-28T02:33:13.667Z"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "The timestamp of updating on database (ISO format)",
+            "example": "2020-09-28T02:33:13.667Z"
+          },
+          "_v": {
+            "type": "integer",
+            "description": "The document version",
+            "example": 0
+          }
+        }
+      }
+    },
+    "responses": {
+      "InternalServerError": {
+        "description": "Internal server error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "description": "The error object"
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -17,6 +17,7 @@
     "express": "^4.17.1",
     "mongoose": "^5.10.7",
     "pipedrive": "^10.4.3",
+    "swagger-ui-express": "^4.1.4",
     "winston": "^3.3.3"
   },
   "devDependencies": {
