@@ -1,15 +1,18 @@
 /* eslint-env node, mocha */
+const mongoose = require('mongoose')
 
-var { Mongoose } = require('mongoose')
-var mongoose = new Mongoose()
+const {
+  HOST,
+  PORT,
+  PROTOCOL
+} = require('../../../src/env')
 
-var { Mockgoose } = require('mockgoose')
-var mockgoose = new Mockgoose(mongoose)
+beforeEach(function (done) {
+  this.baseURL = `${PROTOCOL}://${HOST}:${PORT}`
+  require('../../../index')
+  done()
+})
 
-before(function (done) {
-  mockgoose.prepareStorage().then(function () {
-    mongoose.connect('mongodb://example.com/TestingDB', function (err) {
-      done(err)
-    })
-  })
+afterEach(function (done) {
+  mongoose.connection.db.dropDatabase(done)
 })

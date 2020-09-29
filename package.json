@@ -10,8 +10,8 @@
     "start": "node index",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "test:func": "mocha --config ./test/functional/config/.mocharc.yml --file ./test/functional/config/setup.js test/functional",
-    "test:unit": "mocha --config ./test/unit/config/.mocharc.yml --file ./test/functional/config/setup.js test/unit"
+    "test:func": "cross-env NODE_ENV=test mocha --config ./test/functional/config/.mocharc.yml --file ./test/functional/config/setup.js test/functional",
+    "test:unit": "cross-env NODE_ENV=test mocha --config ./test/unit/config/.mocharc.yml --file ./test/functional/config/setup.js test/unit"
   },
   "dependencies": {
     "axios": "^0.20.0",
@@ -27,6 +27,7 @@
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
     "cors": "^2.8.5",
+    "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
     "eslint": "^7.10.0",
     "eslint-config-standard": "^14.1.1",

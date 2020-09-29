@@ -38,4 +38,4 @@ schema.statics.createOrder = async function (params) {
   session.endSession()
 }
 
-module.exports = mongoose.model('order', schema, 'order')
+module.exports = mongoose.model('Order', schema, 'order')
