@@ -1,29 +1,22 @@
 language: node_js
-
 node_js:
 - node
-
 addons:
   apt:
     packages:
-      - libgconf-2-4
-
+    - libgconf-2-4
 cache:
   yarn: true
-
 install:
-  - yarn install --ignore-engines
-
+- yarn install --ignore-engines
 before_script:
-  - yarn start --silent &
-
+- yarn start --silent &
 script:
-  - npm run lint
-
+- npm run lint
 deploy:
   provider: heroku
   api_key:
-    secure: fLuSKuHtu1uTdirt8Srbvt5lH5LqqzJb49pa5tS8j8aLrCvOfrzehEybVoGAkZnwWeyxjwmLHW+XhUpdgvdPeK82I38ry/0JyGY9sQ1dnIJ1npvenQqpg6325aFDVgNSLIGWWk/NMkIdVMzEDp1W5U3ZxJedkwFlCUyTKzaxtkkkNlPRN2+ZsCMIpBJ98xij8BpKbkxwqe9u5mRJxFB/mxyq2OX5Wlo3Ajd4LBtWaIsykx8JJ3FCbxmY/5MfOEW8pRavTvMCZbitoA6m5LiK8wD6dHVhL6aCP1qw3VSZ82PstIhWwbgH4ay0mwjXum9y3f84KOGjl/zOPX3OHxBFjXUCFyC2LVAd6JdvhTubhN+SBLPhPxBUnyvab5jRTIzbfiHa8wBUuVwLxq2t+jPEPRp+BHEB4Xs3J317hB8M8mlwO7RBsc9d05tfaXibIdETvdy+KQarH9sx78BxFwlNPHW0VKHFtvyxEnJ+gysxkvvEY4Hp71wexzhEkGwOItEDSJ2+KVVxhUDDB46/QxzHg+oI3TJpRlQ34EjNQ6KuSB7GLedB6P6dvLxF9wkZiar91ffV9s1ZTA9PY1Nvff8F39mW3cb/ktY++1Xz4uPb+02hVxc+IVs9vtxA0XCGJfyTlDP0+FCohGG3/+F8ClbPi8uX6m42CY+O8l9MnI5bBw8=
+    secure: T243FBSe2CxS6h+WK7ys9uBMpk/xwZTYkUf6z+SWJTA0c8XG9ZPKbHr6Q+bK0gQXA9kQsSzvBzpZp0ZUtPtLEobdgJurmSOrmmJ3N98lEsKQTSNVCG+cDOAfK8ogTlsULkaxAFg9Pg3Cr/EXIMSKCBe7kRZuEUUPrzgst1A4gzcI8xN8HwhDT97FFMpt1KEVVb36GqjhWZ0g/9FQoWmlhrf/hx+BSumSJK07aZzw7YlsITllFRR3NaTtAaHFK658uCRT6m+eRepKZt0md10oLkqctxC5V/ENXYpw4hady3xXVe6jAQpX5WDQYFVUfAyM6JSMzBYMu87zITgPvLLkhkatd0TZkjt7/JMRMLfL7cb5NWp2wjDhir+dZPcWL+22YZeFdrR0kyxWMCkTE2kCt1W/fn0hBgXDg4XTwP+IudVEtQEwWjvQrA5C/bsR8noZ/imXySu8lDm9gSB1mBDeUViOl9n1HYUmNcgol0LeLe55BbAyousyIUgWzuwN0pQicWRDc98EjFq5fDpCZEasnTdIsfW6bOAoTg98b32H80km81uwzW+DZWAeo5Gz9fkrn1RsPt8/Az4i5ciuriREozfX95dl5SrpQuAwj7w/yZkojdzTWxlY6sPhfZyszVAqwD8144jN76KLM8R9lg/Wm0cFBVOasprT1CLgDnjFgjk=
   app: pipedrive-bling-integration
   on:
     repo: olucasgomes/pipedrive-bling-integration
