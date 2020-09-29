@@ -1,0 +1,31 @@
+language: node_js
+
+node_js:
+- node
+
+addons:
+  apt:
+    packages:
+      - libgconf-2-4
+
+cache:
+  directories:
+    - ~/.npm
+    - ~/.cache
+
+install:
+  - yarn install
+
+before_script:
+  - yarn start --silent &
+
+script:
+- yarn lint
+
+deploy:
+  provider: heroku
+  api_key:
+    secure: fLuSKuHtu1uTdirt8Srbvt5lH5LqqzJb49pa5tS8j8aLrCvOfrzehEybVoGAkZnwWeyxjwmLHW+XhUpdgvdPeK82I38ry/0JyGY9sQ1dnIJ1npvenQqpg6325aFDVgNSLIGWWk/NMkIdVMzEDp1W5U3ZxJedkwFlCUyTKzaxtkkkNlPRN2+ZsCMIpBJ98xij8BpKbkxwqe9u5mRJxFB/mxyq2OX5Wlo3Ajd4LBtWaIsykx8JJ3FCbxmY/5MfOEW8pRavTvMCZbitoA6m5LiK8wD6dHVhL6aCP1qw3VSZ82PstIhWwbgH4ay0mwjXum9y3f84KOGjl/zOPX3OHxBFjXUCFyC2LVAd6JdvhTubhN+SBLPhPxBUnyvab5jRTIzbfiHa8wBUuVwLxq2t+jPEPRp+BHEB4Xs3J317hB8M8mlwO7RBsc9d05tfaXibIdETvdy+KQarH9sx78BxFwlNPHW0VKHFtvyxEnJ+gysxkvvEY4Hp71wexzhEkGwOItEDSJ2+KVVxhUDDB46/QxzHg+oI3TJpRlQ34EjNQ6KuSB7GLedB6P6dvLxF9wkZiar91ffV9s1ZTA9PY1Nvff8F39mW3cb/ktY++1Xz4uPb+02hVxc+IVs9vtxA0XCGJfyTlDP0+FCohGG3/+F8ClbPi8uX6m42CY+O8l9MnI5bBw8=
+  app: pipedrive-bling-integration
+  on:
+    repo: olucasgomes/pipedrive-bling-integration

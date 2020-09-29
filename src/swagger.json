@@ -51,32 +51,20 @@
       "order": {
         "type": "object",
         "properties": {
-          "client": {
-            "type": "object",
-            "description": "The client information (org_name and person_name) from the pipedrive deal",
-            "example": {
-              "company_name": "Company 123",
-              "name": "Joseph Gomez"
-            }
+          "total_value": {
+            "type": "integer",
+            "description": "The total value",
+            "example": 17500
           },
-          "product": {
-            "type": "object",
-            "description": "The product information (value, currency and title) from the pipedrive deal",
-            "example": {
-              "title": "Product title 123",
-              "value": "175000",
-              "currency": "BRL"
-            }
+          "won_date": {
+            "type": "date",
+            "description": "The date of the won deal",
+            "example": "2020-09-26T00:00:00.000Z"
           },
           "_id": {
             "type": "string",
             "description": "The order id",
             "example": "507f1f77bcf86cd799439011"
-          },
-          "id_deal": {
-            "type": "string",
-            "description": "The deal id from pipedrive",
-            "example": "1"
           },
           "created_at": {
             "type": "string",
