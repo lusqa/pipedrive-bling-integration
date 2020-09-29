@@ -1,20 +1,23 @@
-<h1 align="center">Welcome to kapivara 👋</h1>
+<h1 align="center">Welcome to Pipedrive/Bling Integration 👋</h1>
+<>
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-0.1.0-blue.svg?cacheSeconds=2592000" />
   <img src="https://img.shields.io/badge/yarn-%3E%3D1.22.5-blue.svg" />
   <img src="https://img.shields.io/badge/node-%3E%3D12.18.4-blue.svg" />
-  <a href="https://github.com/olucasgomes/Kapivara#readme" target="_blank">
+  <a href="https://github.com/olucasgomes/pipedrive-bling-integration#readme" target="_blank">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
   </a>
-  <a href="https://github.com/olucasgomes/Kapivara/graphs/commit-activity" target="_blank">
+  <a href="https://github.com/olucasgomes/pipedrive-bling-integration/graphs/commit-activity" target="_blank">
     <img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" />
   </a>
-  <a href="https://github.com/olucasgomes/Kapivara/blob/master/LICENSE" target="_blank">
-    <img alt="License: MIT" src="https://img.shields.io/github/license/olucasgomes/Kapivara" />
+  <a href="https://github.com/olucasgomes/pipedrive-bling-integration/blob/master/LICENSE" target="_blank">
+    <img alt="License: MIT" src="https://img.shields.io/github/license/olucasgomes/pipedrive-bling-integration" />
   </a>
 </p>
 
-### 🏠 [Homepage](https://github.com/olucasgomes/Kapivara#readme)
+> An application to integrate the Pipedrive API to the Bling API
+
+### 🏠 [Homepage](https://github.com/olucasgomes/pipedrive-bling-integration#readme)
 
 ## Prerequisites
 
@@ -41,7 +44,7 @@ yarn run start
 
 ## 🤝 Contributing
 
-Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/olucasgomes/Kapivara/issues). You can also take a look at the [contributing guide](https://github.com/olucasgomes/Kapivara/blob/master/CONTRIBUTING.md).
+Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/olucasgomes/pipedrive-bling-integration/issues). You can also take a look at the [contributing guide](https://github.com/olucasgomes/pipedrive-bling-integration/blob/master/CONTRIBUTING.md).
 
 ## Show your support
 
@@ -50,7 +53,7 @@ Give a ⭐️ if this project helped you!
 ## 📝 License
 
 Copyright © 2020 [Lucas Gomes](https://github.com/olucasgomes).<br />
-This project is [MIT](https://github.com/olucasgomes/Kapivara/blob/master/LICENSE) licensed.
+This project is [MIT](https://github.com/olucasgomes/pipedrive-bling-integration/blob/master/LICENSE) licensed.
 
 ***
 _This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_

@@ -2,8 +2,8 @@
   "openapi": "3.0.1",
   "info": {
     "version": "1.0.0",
-    "title": "Kapivara",
-    "description": ""
+    "title": "Pipedrive/Bling Integration",
+    "description": "An application to integrate the Pipedrive API to the Bling API"
   },
   "servers": [
   ],
