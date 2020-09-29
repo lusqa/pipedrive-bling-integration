@@ -3,6 +3,7 @@
   <img alt="Version" src="https://img.shields.io/badge/version-0.1.0-blue.svg?cacheSeconds=2592000" />
   <img src="https://img.shields.io/badge/yarn-%3E%3D1.22.5-blue.svg" />
   <img src="https://img.shields.io/badge/node-%3E%3D12.18.4-blue.svg" />
+  <img src="https://travis-ci.org/olucasgomes/pipedrive-bling-integration.svg?branch=master">
   <a href="https://github.com/olucasgomes/pipedrive-bling-integration#readme" target="_blank">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
   </a>
