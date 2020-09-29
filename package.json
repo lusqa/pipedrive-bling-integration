@@ -9,7 +9,9 @@
     "dev": "nodemon index",
     "start": "node index",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "test:func": "mocha --config ./test/functional/config/.mocharc.yml --file ./test/functional/config/setup.js test/functional",
+    "test:unit": "mocha --config ./test/unit/config/.mocharc.yml --file ./test/functional/config/setup.js test/unit"
   },
   "dependencies": {
     "axios": "^0.20.0",

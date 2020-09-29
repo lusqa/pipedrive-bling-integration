@@ -1,0 +1,19 @@
+bail: false
+check-leaks: false
+color: true
+delay: false
+diff: true
+exit: true
+global:
+  - 'jQuery'
+  - '$'
+recursive: true
+reporter: 'spec'
+retries: 1
+slow: 75
+sort: false
+spec: 'test/unit/*.spec.js'
+timeout: 15000
+trace-warnings: true
+trace-deprecation: true
+watch: false
