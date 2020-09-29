@@ -8,6 +8,12 @@ const BlingService = require('../../services/bling.service')
 
 const { DealsController } = pipedrive
 
+function getWonDateFromDeal (deal) {
+  const [wonDate] = deal.won_time.split(' ')
+  const utcDate = new Date(wonDate).toISOString()
+  return utcDate
+}
+
 module.exports = async () => {
   pipedrive.Configuration.apiToken = PIPEDRIVE_API_TOKEN
 
@@ -22,38 +28,45 @@ module.exports = async () => {
   }
 
   const { data: deals } = response
-  const dbDeals = new Map()
-  deals.forEach(async deal => {
-    try {
-      const [wonDate] = deal.won_time.split(' ')
-      const utcDate = new Date(wonDate).toISOString()
-      const actualValue = dbDeals.get(utcDate) || 0
-      dbDeals.set(utcDate, actualValue + deal.value)
+  if (deals.length) {
+    const dealsByDate = {}
+    deals.forEach(deal => {
+      const wonDate = getWonDateFromDeal(deal)
+      const actualValue = dealsByDate[wonDate] || 0
+      dealsByDate[wonDate] = actualValue + deal.value
+    })
 
-      const existingOrder = await Order.findOne({ won_date: utcDate })
-      if (!existingOrder) {
-        await BlingService.createOrder({
-          code: deal.id_deal,
-          companyName: deal.org_name,
-          productValue: deal.value,
-          productTitle: deal.title
-        })
-      }
-    } catch (err) {
-      LOGGER.error('Error creating orders in Bling service [%o]', err)
-      throw err
-    }
-  })
-
-  dbDeals.forEach(async (value, key) => {
-    try {
-      await Order.createOrder({
+    const dbOrderPromises = []
+    Object.entries(dealsByDate).forEach(([key, value]) => {
+      dbOrderPromises.push(Order.createOrder({
         total_value: value,
         won_date: key
-      })
+      }))
+    })
+
+    try {
+      await Promise.all(dbOrderPromises)
     } catch (err) {
       LOGGER.error('Error creating orders in database [%o]', err)
       throw err
     }
-  })
+
+    const blingOrderPromises = deals.map(deal => {
+      const wonDate = getWonDateFromDeal(deal)
+      return BlingService.createOrder({
+        code: deal.id,
+        companyName: deal.org_name,
+        productValue: deal.value,
+        productTitle: deal.title,
+        wonDate
+      })
+    })
+
+    try {
+      await Promise.all(blingOrderPromises)
+    } catch (err) {
+      LOGGER.error('Error creating orders in Bling service [%o]', err)
+      throw err
+    }
+  }
 }

@@ -30,7 +30,7 @@ schema.statics.createOrder = async function (params) {
     if (!existingOrder) {
       await this.create({
         total_value: params.total_value,
-        won_date: params.won_dat
+        won_date: params.won_date
       })
     }
   })
