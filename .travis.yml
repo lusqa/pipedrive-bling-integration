@@ -14,8 +14,6 @@ before_script:
 - yarn start --silent &
 script:
 - npm run lint
-- npm run test:unit
-- npm run test:func
 deploy:
   provider: heroku
   api_key:
