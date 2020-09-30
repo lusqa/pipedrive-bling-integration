@@ -13,10 +13,12 @@ const databaseLoader = async () => {
 
   try {
     if (NODE_ENV === 'test') {
+      LOGGER.info('Using mockgoose to run tests')
       const { Mockgoose } = require('mockgoose')
       const mockgoose = new Mockgoose(mongoose)
-      mockgoose.prepareStorage().then(async function () {
+      await mockgoose.prepareStorage().then(async function () {
         await mongoose.connect('mongodb://example.com/TestingDB', options)
+        LOGGER.info('Connection to mock database has successfully established')
       })
     } else {
       await mongoose.connect(DATABASE_URL, options)
