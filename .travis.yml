@@ -5,6 +5,7 @@ addons:
   apt:
     packages:
     - libgconf-2-4
+    - libcurl3
 cache:
   yarn: true
 install:
