@@ -18,12 +18,13 @@
 > An application to integrate the Pipedrive API to the Bling API
 
 ### 🏠 [Homepage](https://github.com/olucasgomes/pipedrive-bling-integration#readme)
-### ✨ [Demo](https://pipedrive-bling-integration.herokuapp.com/)
+### ✨ [Demo](https://pipedrive-bling-integration.herokuapp.com/api-docs)
 
 ## Prerequisites
 
 - yarn >=1.22.5
 - node >=12.18.4
+- env variables
 
 ## Install
 
@@ -36,6 +37,9 @@ yarn install
 ```sh
 yarn run start
 ```
+
+## Endpoints documentation
+Access the swagger endpoint http://localhost:3000/api-docs to see the endpoints documentation
 
 ## Author
 
